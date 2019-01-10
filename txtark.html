@@ -1,0 +1,87 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <title>
+        txtark.js
+    </title>
+</head>
+<body>
+    <style>
+        .interactable{ 
+            color: blue;
+        }
+
+        .interactable:hover{
+            text-decoration: underline;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <p id="intro">
+        Cold air blows over you. Sand itches your <span v-on:click="toggle_gender" id="genderpicker" class="interactable">{{ message }}</span>. As you right yourself, you see charred metal and plastic remains of the pod you'd been in. Memories flow before you: shuttle falling, klaxons blaring, the great smash. Fire, tearing yourself out of the flightsuit. Choking on smoke as the world became black and consciousness faded. A patch of the flightsuit remains with a burned flag-patch and your <span id="namer"><input v-model="message"><button v-on:click="finalize_name">&#10003;</button></span>
+    </p>
+
+
+    <div id="gameui">
+        <div id="bld"></div>
+        <div id="controls"></div>
+        <div id="status">{{ health }}{{ hunger }}{{ weight}}{{ oxygen }}</div>        
+    </div>
+
+
+
+    <script>
+        function Human(name, stats, pos) {
+            // incorporate a function to check each is correct
+            this.name = name; // string
+            this.stats = stats; // object
+            this.pos = pos; // xyz array
+            this.sayName = function() {
+                return "Hi, I'm " + this.name;
+            }
+        }
+        var gameState = Object.create(null);
+        gameState.pc = Object.create(null);
+        gameState.pc.sex = "F";
+
+        var genderize = new Vue({
+            el: "#genderpicker",
+            data: {
+                message: "vulva"
+            },
+            methods: {
+                toggle_gender: function() {
+                    if (this.message == "penis") {
+                        this.message = "vulva";
+                        return gameState.pc.sex = "F";
+                     } else if (this.message =="vulva") {
+                         this.message = "penis";
+                         return gameState.pc.sex = "M";
+                     } else alert("Error in genderize");
+                }
+            }
+        })
+
+        var namer = new Vue({
+            el: "#namer",
+            data: {
+                message: "name"
+            },
+            methods: {
+                finalize_name: function() {
+                    gameState.pc.name = this.message;
+                }
+            }
+        })
+
+        var stats_display = new Vue({
+            el: "#status",
+            data: {
+                health: "Health",
+                hunger: "Hunger",
+                weight: "Weight",
+                oxygen: "Oxygen"
+            }
+        })
+    </script>
+</body>
