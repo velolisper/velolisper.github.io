@@ -36,7 +36,15 @@
         <div id="gameui">
             <div id="bld"></div>
             <div id="controls"></div>
-            <div id="status">{{ health }}{{ hunger }}{{ weight}}{{ oxygen }}</div>        
+            <div id="status">
+                <ol>
+                    <status-item 
+                        v-for="item in statvalarray"
+                        v-bind:statval="item"
+                        v-bind:key="item.id">
+                    </status-item>
+                </ol>
+                </div>        
         </div>
     </div>
 
@@ -92,14 +100,22 @@
             }
         });
 
-        var stats_display = new Vue({
-            el: "#status",
-            data: {
-                health: "Health",
-                hunger: "Hunger",
-                weight: "Weight",
-                oxygen: "Oxygen"
-            }
+        Vue.component('status-item', {
+            // ummm
+            props: ['statval'],
+            template: '<li>{{ statval.label }} {{ statval.val }}</li>'
         })
+
+        var stats_display = new Vue({
+            el : "#status",
+            data : {
+                statvalarray : [
+                    { id: 0, label: "Health: ", val: 100 },
+                    { id: 1, label: "Hunger: ", val: 100 },
+                    { id: 2, label: "Weight: ", val: 0 },
+                    { id: 3, label: "Oxygen: ", val: 100 }
+                    ]
+                }
+            })
     </script>
 </body>
