@@ -7,8 +7,19 @@
 </head>
 <body>
     <style>
+        #content {
+            width: 1000px;
+            background-color:lightsteelblue;
+            padding:10px;
+            margin: 0 auto;
+        }
+        #gameui {
+            display: none;
+        }
+
         .interactable{ 
-            color: blue;
+        /*    color: blue; */
+            background-color:lightblue;
         }
 
         .interactable:hover{
@@ -17,18 +28,17 @@
     </style>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-    <p id="intro">
-        Cold air blows over you. Sand itches your <span v-on:click="toggle_gender" id="genderpicker" class="interactable">{{ message }}</span>. As you right yourself, you see charred metal and plastic remains of the pod you'd been in. Memories flow before you: shuttle falling, klaxons blaring, the great smash. Fire, tearing yourself out of the flightsuit. Choking on smoke as the world became black and consciousness faded. A patch of the flightsuit remains with a burned flag-patch and your <span id="namer"><input v-model="message"><button v-on:click="finalize_name">&#10003;</button></span>
-    </p>
-
-
-    <div id="gameui">
-        <div id="bld"></div>
-        <div id="controls"></div>
-        <div id="status">{{ health }}{{ hunger }}{{ weight}}{{ oxygen }}</div>        
+    <div id="content">
+        <p id="intro">
+            Cold air blows over you. Sand itches your <span v-on:click="toggle_gender" id="genderpicker" class="interactable">{{ message }}</span>. As you right yourself, you see charred metal and plastic remains of the pod you'd been in. Memories flow before you: shuttle falling, klaxons blaring, the great smash. Fire, tearing yourself out of the flightsuit. Choking on smoke as the world became black and consciousness faded. A patch of the flightsuit remains with a burned flag-patch and your <span id="namer"><input v-model="message"><button v-on:click="finalize_name">&#10003;</button></span>. You are on a sandy beach, it's up to you to <span v-on:click="show_game" id="endintro" class="interactable">survive.</span>
+        </p>
+      
+        <div id="gameui">
+            <div id="bld"></div>
+            <div id="controls"></div>
+            <div id="status">{{ health }}{{ hunger }}{{ weight}}{{ oxygen }}</div>        
+        </div>
     </div>
-
-
 
     <script>
         function Human(name, stats, pos) {
@@ -61,7 +71,6 @@
                 }
             }
         })
-
         var namer = new Vue({
             el: "#namer",
             data: {
@@ -73,6 +82,15 @@
                 }
             }
         })
+        var endintro = new Vue({
+            el: "#endintro",
+            methods: {
+                show_game: function() {
+                    document.getElementById("gameui").style.display = "block";
+                    document.getElementById("intro").style.display = "none";
+                }
+            }
+        });
 
         var stats_display = new Vue({
             el: "#status",
