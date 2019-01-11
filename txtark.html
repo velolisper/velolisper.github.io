@@ -25,6 +25,12 @@
             padding:10px;
             margin: 0 auto;
         }
+        #buildmenu {
+            display: none;
+        }
+        #inventory {
+            display: none;
+        }
         #gameui {
             display: none;
         }
@@ -44,11 +50,24 @@
         <p id="intro">
             Cold air blows over you. Sand itches your <span v-on:click="toggle_gender" id="genderpicker" class="interactable">{{ message }}</span>. As you right yourself, you see charred metal and plastic remains of the pod you'd been in. Memories flow before you: shuttle falling, klaxons blaring, the great smash. Fire, tearing yourself out of the flightsuit. Choking on smoke as the world became black and consciousness faded. A patch of the flightsuit remains with a burned flag-patch and your <span id="namer"><input v-model="message"><button v-on:click="finalize_name">&#10003;</button></span>. You are on a sandy beach, it's up to you to <span v-on:click="show_game" id="endintro" class="interactable">survive.</span>
         </p>
-      
+
+        <div id="buildmenu">
+            <!-- implement later -->
+        </div>
+
+        <div id="inventory">
+            <!-- AKA backpack -->
+        </div>
+
         <div id="gameui">
-            <div id="bld"></div>
-            <div id="controls"></div>
+            <div id="world">
+            </div>
+            <div id="controls">
+                <button id="buildbtn"></button>
+                <button id="bpackbtn"></button>
+            </div>
             <div id="status">
+                <!-- show active item here -->
                 <ul>
                     <status-item 
                         v-for="item in statvalarray"
