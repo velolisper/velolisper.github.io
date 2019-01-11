@@ -6,7 +6,7 @@ function populateWorld() {
 
 function activeWorld() {
     // this function should provide a space for the world and all creatures within it to do their thing
-    let isActive = false;
+    let isActive = true;
     let currentTurn = 0;
     let ticker = function() {
         currentTurn+=1;
@@ -15,9 +15,12 @@ function activeWorld() {
 
     while(isActive == true) {
         // game loop here
+
     }
 
 }
+
+var Animal = Object.create(null);
 
 const originalCreatures = ['Dodo', 'Raptor', 'Triceratops', 'Parasaur', 'Meganeura', 'Dilophosaur', 'Carnotaurus', 'Stegosaur', 'Brontosaur', 'Paraceratherium', 'Trilobyte', 'Myrmidons', 'Rex', 'Allosaurus', 'Ankylosaur', 'Microraptor', 'Troodon', 'Compsagnathus', 'Dimorphodon', 'Dimetrodon', 'Spinosaurus', 'Carbonemys', 'Phiomia', 'Titanoboa', 'Beelzebufo', 'Achinata', 'Bear', 'Equus', 'Beaver', 'Pteranodon', 'Tapejara', 'Quetzelcoatlus', 'Argentavis', 'Pelagornis', 'Hesperornis', 'Icthyornis', 'Archeoptyrex', 'Mammoth', 'WRhino', 'Sabertooth', 'Baryonyx', 'Bat', 'Spider', 'Centipede', 'Mesopithecus', 'Gigantopithecus', 'Iguanadon', 'Kentrosaurus', 'Diplodocus', 'Glyptodon', 'Chalcotherium', 'Megatherium', 'Ichtyosaur', 'Plesiosaur', 'Coelecanth', 'Salmon', 'Piranha', 'Cnideria', 'Eel', 'Mosasaur', 'Eurypterid', 'GSquid', 'Lanturnfish', 'Basilosaurus', 'Megalosaurus', 'Elk', 'Giganotosaurus', 'Titanosaurus', 'Thylacoleo', 'Direwolf', 'Hyenadont', 'Enteledont', 'Leedsitchys', 'Bees', 'Leeches', 'Megalodon', 'Otter', 'Penguin', 'Phorusraccus', 'Sarcosuchus', 'Kaprosuchus', 'Therizinosaur']
 
