@@ -7,6 +7,18 @@
 </head>
 <body>
     <style>
+        ul { /* to make the status bar horizontal */
+            list-style-type: none;
+            margin: 0;
+            padding: 5px;
+        }
+
+        li {
+            display: inline;
+            padding: 1px;
+            margin: 1px;
+        }
+
         #content {
             width: 1000px;
             background-color:lightsteelblue;
@@ -37,13 +49,13 @@
             <div id="bld"></div>
             <div id="controls"></div>
             <div id="status">
-                <ol>
+                <ul>
                     <status-item 
                         v-for="item in statvalarray"
                         v-bind:statval="item"
                         v-bind:key="item.id">
                     </status-item>
-                </ol>
+                </ul>
                 </div>        
         </div>
     </div>
@@ -61,6 +73,8 @@
         var gameState = Object.create(null);
         gameState.pc = Object.create(null);
         gameState.pc.sex = "F";
+        gameState.pc.skills = { crafting: 100, melee: 100, speed: 100 };
+        gameState.pc.limits = { health: 100, stamina: 100, hunger: 100, thirst: 100, oxygen: 100, weight: 0 };
 
         var genderize = new Vue({
             el: "#genderpicker",
@@ -103,18 +117,19 @@
         Vue.component('status-item', {
             // ummm
             props: ['statval'],
-            template: '<li>{{ statval.label }} {{ statval.val }}</li>'
+            template: '<li>{{ statval.label }} {{ statval.val }} </li>'
         })
 
         var stats_display = new Vue({
             el : "#status",
             data : {
                 statvalarray : [
-                    { id: 0, label: "Health: ", val: 100 },
-                    { id: 1, label: "Hunger: ", val: 100 },
-                    { id: 2, label: "Weight: ", val: 0 },
-                    { id: 3, label: "Oxygen: ", val: 100 },
-                    { id: 4, label: "Thirst: ", val: 100 }
+                    { id: 0, label: "Health: ", val: gameState.pc.limits.health },
+                    { id: 1, label: "Stamina: ", val: gameState.pc.limits.stamina },
+                    { id: 2, label: "Hunger: ", val: gameState.pc.limits.hunger },
+                    { id: 3, label: "Weight: ", val: gameState.pc.limits.weight },
+                    { id: 4, label: "Oxygen: ", val: gameState.pc.limits.oxygen },
+                    { id: 5, label: "Thirst: ", val: gameState.pc.limits.thirst }
                     ]
                 }
             })
