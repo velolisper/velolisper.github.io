@@ -46,8 +46,10 @@
             el: "#endintro",
             methods: {
                 show_game: function() {
+                    document.getElementById("tutorial").style.display = "block";
                     document.getElementById("gameui").style.display = "block";
                     document.getElementById("intro").style.display = "none";
+
                 }
             }
         });

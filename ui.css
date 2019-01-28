@@ -1,0 +1,47 @@
+    ul { /* to make the status bar horizontal */
+        list-style-type: none;
+        margin: 0;
+        padding: 5px;
+        }
+
+    li {
+        display: inline;
+        padding: 1px;
+        margin: 1px;
+        }
+
+    #content {
+        width: 1000px;
+        background-color:lightsteelblue;
+        padding:10px;
+        margin: 0 auto;
+        }
+
+    #tutorial {
+        display: none;
+    }
+
+    #farmquest {
+            display: none;
+        }
+    #buildmenu {
+            display: none;
+        }
+    #inventory {
+            display: none;
+        }
+    #gameui {
+            display: none;
+            text-align: center;
+            background-color:  #33ffbd;
+            border-radius: 15px;
+        }
+
+    .interactable{ 
+        /*    color: blue; */
+            background-color:lightblue;
+        }
+
+    .interactable:hover{
+            text-decoration: underline;
+        }
