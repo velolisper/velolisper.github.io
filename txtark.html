@@ -51,13 +51,24 @@
 
     <div id="content">
         <p id="intro">
-            Cold air blows over you. Sand itches your <span v-on:click="toggle_gender" id="genderpicker" class="interactable">{{ message }}</span>. As you right yourself, you see charred metal and plastic remains of the pod you'd been in. Memories flow before you: shuttle falling, klaxons blaring, the great smash. Fire, tearing yourself out of the flightsuit. Choking on smoke as the world became black and consciousness faded. A patch of the flightsuit remains with a burned flag-patch and your <span id="namer"><input v-model="message"><button v-on:click="finalize_name">&#10003;</button></span>. You are on a sandy beach, it's up to you to <span v-on:click="show_game" id="endintro" class="interactable">survive.</span>
+            Cold air blows over you. Sand itches your <span v-on:click="toggle_gender" id="genderpicker" class="interactable">{{ message }}</span>. As you right yourself, you see charred metal and plastic remains of the shuttlepod you'd been in. Memories flow before you: pod falling, klaxons blaring, that mighty smash. Fire, tearing yourself out of the flightsuit. Choking on smoke as the world became black and consciousness faded. A patch of the flightsuit remains with a burned flag-patch and your <span id="namer"><input v-model="message"><button v-on:click="finalize_name">&#10003;</button></span>. You are on a sandy beach, it's up to you to <span v-on:click="show_game" id="endintro" class="interactable">survive.</span>
         </p>
+
+        <p id="tutorial">
+            To survive, you should probably figure out how to interact with the sorry-ass world. 
+
+        </p>
+
+        <section id="shelter">
+            <p id="initialShelter">
+                You should probably build a shelter of some sort.
+            </p>
+        </section>
 
         <section id="farmquest">
             <p id="initial">Now that you're not going to freeze to death - or get eaten by one of the megafauna infesting this island - you should probably work on food. Hunting and fishing is a great way to get protein and nutrients, but you're not sure how safe it is with your primitive weapons yet. Perhaps some of these edible berries you've been munching on could be farmed?</p>
             <p id="buildplots">
-                To be created later
+                To farm, you'll need to create a set of tools.
             </p>
 
         </section>
@@ -170,4 +181,33 @@
             })
     </script>
     <script src="world.js"></script>
+
+    <!--
+        GAME DESIGN
+            "Survival Crafting Megafaunal Adventure"
+            Core interactions:
+            - Level 1 / Superficial: Clicking on buttons and entering text; reading to determine the state of the world.
+            - Level 2 / Core: Balancing immediate survival needs versus acquisitive and exploratory imperatives to progress.
+            - Level 3 / Advancement: Supervising multiple tiers of resource gathering and development
+
+            Game Elements:
+                - Character / Background Creator
+                - Narrative Passages
+                - Status Bar
+                - Action Bar
+                - Minigames
+            Minigames:
+                - Character Progression (Stats, Level, Equipment, Knowledge)
+                - Construction
+                - Harvesting
+                - Exploration
+                - Farming
+                - Designing
+                - Taming
+                - Crafting*
+
+            *Crafting should have several minigames as variants of a core game, with different workspaces and workflows.
+             
+    -->
+
 </body>
